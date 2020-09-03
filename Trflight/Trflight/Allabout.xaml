@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Trflight.Allabout">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame
+                BackgroundColor="Blue"
+                HorizontalOptions="Center">
+
+                <Button x:Name="top"
+                        BackgroundColor="Red"
+                        WidthRequest      ="160"
+                        HeightRequest     ="160"
+                        CornerRadius      ="80"
+                        VerticalOptions   ="Center"
+                        HorizontalOptions ="Center"
+                        BorderWidth="2"
+                        BorderColor="White"
+                        Clicked="top_Clicked">
+                </Button>
+            </Frame>
+            <Frame
+                BackgroundColor="Blue"
+                HorizontalOptions="Center">
+
+                <Button x:Name="cntr"
+                        BackgroundColor="Yellow"
+                        WidthRequest      ="160"
+                        HeightRequest     ="160"
+                        CornerRadius      ="80"
+                        VerticalOptions   ="Center"
+                        HorizontalOptions ="Center"
+                        BorderWidth="2"
+                        BorderColor="White"
+                        Clicked="cntr_Clicked"
+                        >
+                </Button>
+            </Frame>
+            <Frame
+                BackgroundColor="Blue"
+                HorizontalOptions="Center">
+
+                <Button x:Name="btm"
+                        BackgroundColor="Green"
+                        WidthRequest      ="160"
+                        HeightRequest     ="160"
+                        CornerRadius      ="80"
+                        VerticalOptions   ="Center"
+                        HorizontalOptions ="Center"
+                        BorderWidth="2"
+                        BorderColor="White"
+                        Clicked="btm_Clicked">
+                </Button>
+            </Frame>
+            <BoxView
+                BackgroundColor="Blue"
+                HorizontalOptions="Center"
+                HeightRequest="100">
+                
+            </BoxView>
+            <Button
+                x:Name="autobtn"
+                BackgroundColor="White"
+                HorizontalOptions="Center"
+                Clicked="autobtn_Clicked">
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
