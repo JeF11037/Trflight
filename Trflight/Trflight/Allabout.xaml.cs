@@ -14,9 +14,95 @@ namespace Trflight
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Allabout : ContentPage
     {
+        public Button tp, cr, bm, bn;
+        public Frame tpFrame, crFrame, bmFrame, bnFrame;
+        public BoxView box;
+
+
         public Allabout()
         {
-            InitializeComponent();
+            //InitializeComponent();
+
+            tp = new Button()
+            {
+                BackgroundColor = Color.Red,
+                WidthRequest = 160,
+                HeightRequest = 160,
+                CornerRadius = 80,
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
+                BorderWidth = 2,
+            };
+            tp.Clicked += Tp_Clicked;
+
+            cr = new Button()
+            {
+                BackgroundColor = Color.Yellow,
+                WidthRequest = 160,
+                HeightRequest = 160,
+                CornerRadius = 80,
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
+                BorderWidth = 2,
+            };
+            cr.Clicked += Cr_Clicked;
+
+            bm = new Button()
+            {
+                BackgroundColor = Color.Green,
+                WidthRequest = 160,
+                HeightRequest = 160,
+                CornerRadius = 80,
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
+                BorderWidth = 2,
+            };
+            bm.Clicked += Bm_Clicked;
+
+            bn = new Button()
+            {
+                BackgroundColor = Color.Blue,
+                WidthRequest = 160,
+                HeightRequest = 160,
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
+                BorderWidth = 2,
+            };
+            bn.Clicked += Bn_Clicked;
+
+            tpFrame = new Frame()
+            {
+                BackgroundColor = Color.Blue,
+                HorizontalOptions = LayoutOptions.Center,
+                Content = tp
+            };
+
+            crFrame = new Frame()
+            {
+                BackgroundColor = Color.Blue,
+                HorizontalOptions = LayoutOptions.Center,
+                Content = cr
+            };
+
+            bmFrame = new Frame()
+            {
+                BackgroundColor = Color.Blue,
+                HorizontalOptions = LayoutOptions.Center,
+                Content = bm
+            };
+
+            box = new BoxView()
+            {
+                BackgroundColor = Color.White,
+                HeightRequest = 100,
+                HorizontalOptions = LayoutOptions.Center,
+            };
+
+            StackLayout st = new StackLayout()
+            {
+                Children = { tpFrame, crFrame, bmFrame, box, bn}
+            };
+            Content = st;
         }
 
         bool topison = true;
@@ -26,54 +112,57 @@ namespace Trflight
 
         void AutoScript()
         {
-            top.Opacity = 1;
+            tp.Opacity = 1;
             Thread.Sleep(4000);
-            cntr.Opacity = 1;
-            Thread.Sleep(4000); 
-            btm.Opacity = 1;
+            cr.Opacity = 1;
+            Thread.Sleep(4000);
+            bm.Opacity = 1;
         }
 
-        private void top_Clicked(object sender, EventArgs e)
-        {
-            topison = !topison;
-            if (autobtnison == true) { if (topison == false) { top.Opacity = 0.5; } else { top.Opacity = 1; } }
-        }
-
-        private void cntr_Clicked(object sender, EventArgs e)
-        {
-            cntrison = !cntrison;
-            if (autobtnison == true) { if (cntrison == false) { cntr.Opacity = 0.5; } else { cntr.Opacity = 1; } } 
-        }
-
-        private void btm_Clicked(object sender, EventArgs e)
-        {
-            btmison = !btmison;
-            if (autobtnison == true) { if (btmison == false) { btm.Opacity = 0.5; } else { btm.Opacity = 1; } }
-        }
-
-        private void autobtn_Clicked(object sender, EventArgs e)
+        private void Bn_Clicked(object sender, EventArgs e)
         {
             autobtnison = !autobtnison;
-            if (autobtnison == false) {
+            if (autobtnison == false)
+            {
                 // Double tapping bug fix
                 autobtnison = true;
-                autobtn.Opacity = 0.5;
-                if (top.Opacity == 1) { top_Clicked(top, e); };
-                if (cntr.Opacity == 1) { cntr_Clicked(cntr, e); };
-                if (btm.Opacity == 1) { btm_Clicked(btm, e); };
+                bn.Opacity = 0.5;
+                if (tp.Opacity == 1) { Tp_Clicked(tp, e); };
+                if (cr.Opacity == 1) { Cr_Clicked(cr, e); };
+                if (bm.Opacity == 1) { Bm_Clicked(bm, e); };
                 autobtnison = false;
-                top.IsEnabled = false;
-                cntr.IsEnabled = false;
-                btm.IsEnabled = false;
+                tp.IsEnabled = false;
+                cr.IsEnabled = false;
+                bm.IsEnabled = false;
 
                 // Watchlight auto function
-                AutoScript(); 
-            } else { 
-                autobtn.Opacity = 1;
-                top.IsEnabled = true;
-                cntr.IsEnabled = true;
-                btm.IsEnabled = true;
+                //AutoScript();
             }
+            else
+            {
+                bn.Opacity = 1;
+                tp.IsEnabled = true;
+                cr.IsEnabled = true;
+                bm.IsEnabled = true;
+            }
+        }
+
+        private void Bm_Clicked(object sender, EventArgs e)
+        {
+            btmison = !btmison;
+            if (autobtnison == true) { if (btmison == false) { bm.Opacity = 0.5; } else { bm.Opacity = 1; } }
+        }
+
+        private void Cr_Clicked(object sender, EventArgs e)
+        {
+            cntrison = !cntrison;
+            if (autobtnison == true) { if (cntrison == false) { cr.Opacity = 0.5; } else { cr.Opacity = 1; } }
+        }
+
+        private void Tp_Clicked(object sender, EventArgs e)
+        {
+            topison = !topison;
+            if (autobtnison == true) { if (topison == false) { tp.Opacity = 0.5; } else { tp.Opacity = 1; } }
         }
     }
 }

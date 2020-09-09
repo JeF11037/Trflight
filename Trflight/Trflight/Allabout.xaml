@@ -16,8 +16,7 @@
                         VerticalOptions   ="Center"
                         HorizontalOptions ="Center"
                         BorderWidth="2"
-                        BorderColor="White"
-                        Clicked="top_Clicked">
+                        BorderColor="White">
                 </Button>
             </Frame>
             <Frame
@@ -32,9 +31,8 @@
                         VerticalOptions   ="Center"
                         HorizontalOptions ="Center"
                         BorderWidth="2"
-                        BorderColor="White"
-                        Clicked="cntr_Clicked"
-                        >
+                        BorderColor="White">
+                    >
                 </Button>
             </Frame>
             <Frame
@@ -49,8 +47,7 @@
                         VerticalOptions   ="Center"
                         HorizontalOptions ="Center"
                         BorderWidth="2"
-                        BorderColor="White"
-                        Clicked="btm_Clicked">
+                        BorderColor="White">
                 </Button>
             </Frame>
             <BoxView
@@ -62,8 +59,7 @@
             <Button
                 x:Name="autobtn"
                 BackgroundColor="White"
-                HorizontalOptions="Center"
-                Clicked="autobtn_Clicked">
+                HorizontalOptions="Center">
             </Button>
         </StackLayout>
     </ContentPage.Content>
