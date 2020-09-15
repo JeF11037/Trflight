@@ -105,6 +105,14 @@ namespace Trflight
             {
                 Children = { tpFrame, crFrame, bmFrame, box, bn}
             };
+
+            while (true)
+            {
+                Frame grass = new Frame() { VerticalOptions = LayoutOptions.FillAndExpand, BackgroundColor = Color.Green };
+                st.Children.Add(grass);
+                break;
+            }
+
             Content = st;
         }
 
@@ -113,16 +121,13 @@ namespace Trflight
         bool btmison = false;
         bool autobtnison = true;
 
+        int puton = 0;
+
         void LightOn()
         {
             if (topison) { tp.Opacity = 1; cr.Opacity = 0.5; bm.Opacity = 0.5; };
             if (cntrison) { tp.Opacity = 0.5; cr.Opacity = 1; bm.Opacity = 0.5; };
             if (btmison) { tp.Opacity = 0.5; cr.Opacity = 0.5; bm.Opacity = 1; };
-        }
-
-        private void Bn_Clicked(object sender, EventArgs e)
-        {
-            autobtnison = !autobtnison;
         }
 
         private void Bm_Clicked(object sender, EventArgs e)
@@ -141,6 +146,25 @@ namespace Trflight
         {
             if (topison == false) { topison = !topison; cntrison = false; btmison = false; }
             LightOn();
+        }
+
+        async void Auto(EventArgs e)
+        {
+            while (autobtnison)
+            {
+                await Task.Delay(1000);
+                if (puton == 0) { Bm_Clicked(bm, e); }
+                else if (puton == 1) { Cr_Clicked(cr, e); }
+                else if (puton == 2) { Tp_Clicked(tp, e); }
+                else if (puton == 3) { Cr_Clicked(cr, e); puton = -1; }
+                puton++;
+            }
+        }
+
+        private void Bn_Clicked(object sender, EventArgs e)
+        {
+            autobtnison = !autobtnison;
+            if (autobtnison) { Auto(e); }
         }
     }
 }
